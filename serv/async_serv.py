@@ -1,5 +1,8 @@
 import asyncio
 from serv.model_serv import Server
+from convert import json_to_bytes
+from convert import bytes_to_json
+from controler import msg_in
 
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
@@ -13,7 +16,15 @@ class ServerClientProtocol(asyncio.Protocol):
 
     def data_received(self, data):
         print('Data received: {}'.format(data))
-        #пока просто отсылаю обратно полученное сообщение, т.к. нет бд
+        request=bytes_to_json(data)
+
+        #Передаем декодирование сообщение на обратоку.
+        answer=msg_in(request)
+
+        #Кодируем
+        data=json_to_bytes(answer)
+
+        #отсылаем ответ
         self.transport.write(data)
 
     def connection_lost(self, exc):
