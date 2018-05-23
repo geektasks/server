@@ -1,8 +1,8 @@
 import asyncio
 from serv.model_serv import Server
-from convert import json_to_bytes
-from convert import bytes_to_json
-from controler import msg_in
+from convert.convert  import json_to_bytes
+from convert.convert  import bytes_to_json
+from controler.controler import msg_in
 
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
