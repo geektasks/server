@@ -3,6 +3,6 @@
 
 
 
-def msg_in(reqest)
+def msg_in(reqest):
 	print(reqest)
 	return(reqest)
