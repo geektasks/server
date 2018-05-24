@@ -10,7 +10,7 @@ CBase = declarative_base()
 class Repository:
 
     def __init__(self):
-        self.engine = create_engine('mysql+mysqlconnector://root:srv18180@localhost/serverdb')
+        self.engine = create_engine('mysql+mysqlconnector://serv_root:srv18180@localhost/serverdb')
         self.session = self.get_session()
         self.create_base()
 
