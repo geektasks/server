@@ -6,7 +6,7 @@ def create_config(path):
 
     config = configparser.ConfigParser()
     config.add_section("Settings")
-    config.set("Settings", "ip", "127.0.0.1")
+    config.set("Settings", "ip", "10.72.72.30")
     config.set("Settings", "port", "8000")
 
     with open(path, "w") as config_file:
