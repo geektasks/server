@@ -1,6 +1,6 @@
 import asyncio
 
-from controler.controler import msg_in
+from controler.controler import CControler
 from serv.convert import bytes_to_json
 from serv.convert import json_to_bytes
 from serv.model_serv import Server
@@ -8,6 +8,7 @@ from serv.model_serv import Server
 
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
+    controler = CControler
     def __init__(self):
         pass
 
@@ -21,7 +22,7 @@ class ServerClientProtocol(asyncio.Protocol):
         request=bytes_to_json(data)
 
         #Передаем декодирование сообщение на обратоку.
-        answer=msg_in(request)
+        answer=self.controler.handle(request)
 
         #Кодируем
         data=json_to_bytes(answer)
@@ -36,3 +37,8 @@ class ServerClientProtocol(asyncio.Protocol):
                 self.server.client_dict.pop(key)
                 break
         print(self.server.client_dict)
+
+#    @property
+ #   def controler(self):
+#
+ #       return self.controler

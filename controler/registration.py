@@ -1,0 +1,3 @@
+
+def registration(request):
+    pass

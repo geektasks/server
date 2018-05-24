@@ -1,0 +1,2 @@
+def authorization(request):
+    pass
