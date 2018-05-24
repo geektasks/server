@@ -1,16 +1,34 @@
-from sqlalchemy import create_engine, Column, Integer, String, Unicode, BLOB, Boolean, VARCHAR
+from sqlalchemy import Column
+from sqlalchemy.dialects.mysql import LONGTEXT, VARCHAR
+from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from repository.models import Users
+
 
 CBase = declarative_base()
+
+
+class Users(CBase):
+
+    __tablename__ = 'users'
+    username = Column(VARCHAR(45), primary_key= True, nullable= False, unique= True)
+    password = Column(LONGTEXT, nullable= False)
+    email = Column(VARCHAR(45), nullable= True)
+
+    def __init__(self, username, password, email = None):
+        self.username = username
+        self.password = password
+        self.email = email
+    def __repr__(self):
+        return self.username
+
 
 class Repository:
 
     def __init__(self):
-        self.engine = create_engine('mysql+mysqlconnector://serv_root:srv18180@localhost/serverdb')
+        self.engine = create_engine('mysql+mysqlconnector://root:srv18180@localhost/serverdb')
         self.session = self.get_session()
-        # self.create_base()
+        self.create_base()
 
     def create_base(self):
         CBase.metadata.create_all(self.engine)
@@ -21,8 +39,13 @@ class Repository:
         return session
 
     def add(self, obj):
-        self.session.add(obj)
-        self.session.commit()
+        try:
+            self.session.add(obj)
+            self.session.commit()
+            return True
+        except:
+            self.session.rollback()
+            return None
 
 
     def get_user(self, username):

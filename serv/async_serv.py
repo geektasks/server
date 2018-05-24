@@ -5,7 +5,6 @@ from serv.convert import bytes_to_json
 from serv.convert import json_to_bytes
 from serv.model_serv import Server
 
-
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
     controler = CControler
@@ -28,6 +27,7 @@ class ServerClientProtocol(asyncio.Protocol):
         data=json_to_bytes(answer)
 
         #отсылаем ответ
+        print(answer)
         self.transport.write(data)
 
     def connection_lost(self, exc):
