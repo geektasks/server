@@ -13,6 +13,7 @@ class ServerClientProtocol(asyncio.Protocol):
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
+
         print('Connection from {}'.format(peername))
         self.transport = transport
 
@@ -29,6 +30,7 @@ class ServerClientProtocol(asyncio.Protocol):
         #отсылаем ответ
         print(answer)
         self.transport.write(data)
+
 
     def connection_lost(self, exc):
         print('The server closed the connection')

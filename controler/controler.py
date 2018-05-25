@@ -29,5 +29,5 @@ class CControler:
                 return shortcuts.unknown_request
         except Exception as err:
             print(err)
-            return shortcuts.internal_server_error
+            return shortcuts.internal_server_error(err)
 

@@ -9,14 +9,15 @@ unknown_request = {
     }
 }
 
-internal_server_error = {
+def internal_server_error(err='internal_server_error'):
+    return {
     "head": {
         "type": "error",
         "name": "internal_server_error"
     },
     "body":{
         "code": 400,
-        "message": "internal_server_error"
+        "message": err
     }
 }
 
