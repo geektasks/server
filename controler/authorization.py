@@ -1,2 +1,2 @@
 def authorization(request):
-    pass
+    return (request)
