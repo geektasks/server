@@ -4,6 +4,8 @@ class CMessage:
 
         self._message=message
 
+
+
     @property
     def head(self):
         return self._message['head']

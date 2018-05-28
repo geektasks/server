@@ -10,9 +10,9 @@ from serv.shortcuts import internal_server_error
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
     controler = CControler
-    message=CMessage
+
     def __init__(self):
-        pass
+        self.message = CMessage
 
     def connection_made(self, transport):
         peername = transport.get_extra_info('peername')
@@ -26,9 +26,9 @@ class ServerClientProtocol(asyncio.Protocol):
         print('Data received: {}'.format(data))
 
         try:
-            self.message = bytes_to_json(data)
+            message=bytes_to_json(data)
             #Передаем декодирование сообщение на обратоку.
-            answer=self.controler.handle(self.message)
+            answer=self.controler.handle(message)
 
             #Кодируем
             data=json_to_bytes(answer)

@@ -3,8 +3,8 @@ from serv.async_serv import ServerClientProtocol
 
 import sys
 try:
-    sys.stdout=open("log.txt","w")
-    sys.stderr=open("log_err.txt","w")
+#    sys.stdout=open("log.txt","w")
+#    sys.stderr=open("log_err.txt","w")
 
 
     from serv.create_config import get_setting

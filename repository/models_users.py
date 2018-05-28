@@ -13,8 +13,7 @@ class Users(CBase):
     email = Column(VARCHAR(45), nullable= True)
     session_id = Column(INTEGER())
 
-    def __init__(self, user_id,username, password, email = None, session_id=None):
-        self.user_id = user_id
+    def __init__(self, username, password, email = None, session_id=None):
         self.username = username
         self.password = password
         self.email = email

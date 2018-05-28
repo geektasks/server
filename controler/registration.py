@@ -7,6 +7,7 @@ serverdb = Repository()
 def registration(body):
     global client_dict
     print(body)
+
     if serverdb.add(Users(body['name'], body['password'])):
         return reg_error
     else:
