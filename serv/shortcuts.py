@@ -64,3 +64,35 @@ check_user_ok = {
                 "message": "ok"
             }
         }
+def auth_done(session_id):
+    return {
+    "head": {
+        "type": "server response",
+        "name": "authorization"
+    },
+    "body":{
+        "code": 200,
+        "message": session_id
+    }
+}
+auth_err = {
+    "head": {
+        "type": "server response",
+        "name": "authorization"
+    },
+    "body":{
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+hello= {
+    'head':{
+        'type':'Hello_from_server',
+        'name':'online'
+        },
+    'body':{
+        'Code':'',
+        'message':''
+        }
+    }

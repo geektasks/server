@@ -17,13 +17,11 @@ class CControler:
     @classmethod
     def handle(cls, request):
         try:
-            head = request['head']
-            head_type= head['type']
-            head_name=head['name']
-            if head_type in TYPE and head_name in NAME:
-                body=request['body']
-                controller = NAME.get(head_name)
-                return controller(body)
+
+            if request.type in TYPE and request.name in NAME:
+
+                controller = NAME.get(request.name)
+                return controller(request.body)
             else:
                 print('unknown_request')
                 return shortcuts.unknown_request

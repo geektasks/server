@@ -4,10 +4,13 @@ from controler.controler import CControler
 from serv.convert import bytes_to_json
 from serv.convert import json_to_bytes
 from serv.model_serv import Server
+from serv.model_msg import CMessage
+
 
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
     controler = CControler
+    message=CMessage
     def __init__(self):
         pass
 
@@ -16,13 +19,15 @@ class ServerClientProtocol(asyncio.Protocol):
 
         print('Connection from {}'.format(peername))
         self.transport = transport
+        #self.transport.write('Hello')
+
 
     def data_received(self, data):
         print('Data received: {}'.format(data))
-        request=bytes_to_json(data)
+        self.message=bytes_to_json(data)
 
         #Передаем декодирование сообщение на обратоку.
-        answer=self.controler.handle(request)
+        answer=self.controler.handle(self.message)
 
         #Кодируем
         data=json_to_bytes(answer)
