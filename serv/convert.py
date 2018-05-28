@@ -12,8 +12,10 @@ def bytes_to_json(request_bytes):
     if not isinstance(request_bytes, bytes):
 
         raise TypeError(WRONG_TYPE_ERROR_TEXT)
-
-    request_dump = request_bytes.decode(DEFAULT_ENCODING)
+    try:
+        request_dump = request_bytes.decode(DEFAULT_ENCODING)
+    except Exception as err:
+        raise err
 
     return json.loads(request_dump)
 

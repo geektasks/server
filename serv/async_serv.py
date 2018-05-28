@@ -5,7 +5,7 @@ from serv.convert import bytes_to_json
 from serv.convert import json_to_bytes
 from serv.model_serv import Server
 from serv.model_msg import CMessage
-
+from serv.shortcuts import internal_server_error
 
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
@@ -24,17 +24,24 @@ class ServerClientProtocol(asyncio.Protocol):
 
     def data_received(self, data):
         print('Data received: {}'.format(data))
-        self.message=bytes_to_json(data)
 
-        #Передаем декодирование сообщение на обратоку.
-        answer=self.controler.handle(self.message)
+        try:
+            self.message = bytes_to_json(data)
+            #Передаем декодирование сообщение на обратоку.
+            answer=self.controler.handle(self.message)
 
-        #Кодируем
-        data=json_to_bytes(answer)
+            #Кодируем
+            data=json_to_bytes(answer)
 
-        #отсылаем ответ
-        print(answer)
-        self.transport.write(data)
+            #отсылаем ответ
+            print(answer)
+            self.transport.write(data)
+        except Exception as err:
+            json=internal_server_error(err)
+            answer=json_to_bytes(json)
+            self.transport.write(answer)
+            return err
+
 
 
     def connection_lost(self, exc):

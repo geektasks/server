@@ -17,7 +17,7 @@ def internal_server_error(err='internal_server_error'):
     },
     "body":{
         "code": 400,
-        "message": err
+        "message": '%s'%(err)
     }
 }
 
@@ -72,7 +72,7 @@ def auth_done(session_id):
     },
     "body":{
         "code": 200,
-        "message": session_id
+        "message": '%i'%(session_id)
     }
 }
 auth_err = {
