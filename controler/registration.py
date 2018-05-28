@@ -9,9 +9,9 @@ def registration(body):
     print(body)
 
     if serverdb.add(Users(body['name'], body['password'])):
-        return reg_error
-    else:
         return user_created
+    else:
+        return reg_error
 
 def check_user(body):
     if serverdb.get_user(body['name']):
