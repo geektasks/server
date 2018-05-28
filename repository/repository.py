@@ -3,7 +3,7 @@ from sqlalchemy.dialects.mysql import LONGTEXT, VARCHAR
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from repository.users import Users
+from repository.models_users import Users
 
 CBase = declarative_base()
 
@@ -52,5 +52,5 @@ class Repository:
 if __name__ == '__main__':
     rep = Repository()
     # rep.add(Users('pilik', '1234','pilik@mail.ru'))
-    print(rep.get_user('pilik').password)
+    print(rep.get_user('ddimans').password)
     print(rep)
