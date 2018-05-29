@@ -4,8 +4,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from repository.models_users import Users
+from repository.models_tasks import Tasks
+from repository.models_comments import Comments
+from repository.models_performers import Performers
+from repository.models_watchers import Watchers
 
-CBase = declarative_base()
+from repository.db_core import CBase
+
 
 class Repository:
 
@@ -18,7 +23,7 @@ class Repository:
         CBase.metadata.create_all(self.engine)
 
     def get_session(self):
-        Session = sessionmaker(bind= self.engine)
+        Session = sessionmaker(bind=self.engine)
         session = Session()
         return session
 
@@ -31,16 +36,15 @@ class Repository:
             self.session.rollback()
             return None
 
-
     def get_user(self, username):
-        result = self.session.query(Users).filter_by(username = username).first()
+        result = self.session.query(Users).filter_by(username=username).first()
         return result
 
-    def get_pass(self,username):
-        result = self.session.query(Users).filter_by(username = username).first().password
+    def get_pass(self, username):
+        result = self.session.query(Users).filter_by(username=username).first().password
         return result
 
-    def set_session_id(self,username,session_id):
+    def set_session_id(self, username, session_id):
         try:
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
             self.session.commit
@@ -48,6 +52,20 @@ class Repository:
         except Exception as err:
             self.session.rollback()
             return err
+
+    def get_task(self, name):
+        result = self.session.query(Tasks).filter_by(name=name).first()
+        return result
+
+    def get_comments(self, task_id):
+        comments_list = list()
+        comments = self.session.query(Comments).filter_by(task_id=task_id).all()
+        for comment in comments:
+            if comment.task_id == task_id:
+                user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
+                comments_list.append({'user': user, 'text': comment.text, 'time': comment.time})
+        return comments_list
+
 
 if __name__ == '__main__':
     rep = Repository()
