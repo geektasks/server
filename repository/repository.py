@@ -40,14 +40,18 @@ class Repository:
         result = self.session.query(Users).filter_by(username=username).first()
         return result
 
+    def get_user_by_session_id(self, session_id):
+        return self.session.query(Users).filter_by(session_id=session_id).first()
+
     def get_pass(self, username):
         result = self.session.query(Users).filter_by(username=username).first().password
         return result
 
     def set_session_id(self, username, session_id):
         try:
+            #TODO сделать проверку на уникальность session_id
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
-            self.session.commit
+            self.session.commit()
             return 1
         except Exception as err:
             self.session.rollback()
