@@ -1,6 +1,6 @@
 from controler.registration import registration, check_user
 from controler.authorization import authorization
-from controler.task import *
+from controler.task import create_task
 import serv.shortcuts as shortcuts
 
 
