@@ -2,7 +2,7 @@ from sqlalchemy import Column
 from sqlalchemy.dialects.mysql import LONGTEXT, VARCHAR, INTEGER
 from sqlalchemy.ext.declarative import declarative_base
 
-CBase = declarative_base()
+from repository.db_core import CBase
 
 class Users(CBase):
 
