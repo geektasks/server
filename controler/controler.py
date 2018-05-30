@@ -1,6 +1,6 @@
 from controler.registration import registration, check_user
 from controler.authorization import authorization
-from controler.task import create_task, edit_task, grant_access
+from controler.task import create_task, edit_task, grant_access, deny_access
 import serv.shortcuts as shortcuts
 
 TYPE = {
@@ -14,7 +14,8 @@ NAME = {
     'check_user': check_user,
     'create task': create_task,
     'edit task': edit_task,
-    'grant access': grant_access
+    'grant access': grant_access,
+    'deny access': deny_access
 }
 
 
