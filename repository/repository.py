@@ -36,6 +36,15 @@ class Repository:
             self.session.rollback()
             return None
 
+    def del_(self, obj):
+        try:
+            self.session.delete(obj)
+            self.session.commit()
+            return True
+        except:
+            self.session.rollback()
+            return None
+
     def get_user(self, username):
         result = self.session.query(Users).filter_by(username=username).first()
         return result
@@ -49,7 +58,7 @@ class Repository:
 
     def set_session_id(self, username, session_id):
         try:
-            #TODO сделать проверку на уникальность session_id
+            # TODO сделать проверку на уникальность session_id
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
             self.session.commit()
             return 1
@@ -93,6 +102,9 @@ class Repository:
                 user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
                 comments_list.append({'user': user, 'text': comment.text, 'time': comment.time})
         return comments_list
+
+    def get_watcher(self, task_id, user_id):
+        return self.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first()
 
 
 if __name__ == '__main__':
