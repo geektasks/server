@@ -18,7 +18,85 @@ def task_created(task_id):
         },
         "body": {
             "code": 201,
-            "message": "сreated",
+            "message": "created",
             "id": "{}".format(task_id)
         }
     }
+
+###########################################
+task_edit_ok = {
+    "head": {
+        "type": "server response",
+        "name": "edit task"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+user_or_task_not_found = {
+    "head": {
+        "type": "server response",
+        "name": "edit task"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
+task_edit_access_denied = {
+    "head": {
+        "type": "server response",
+        "name": "edit task"
+    },
+    "body":{
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+
+task_edit_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "task edit"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+###########################################################
+
+grant_access_ok = {
+    "head": {
+        "type": "server response",
+        "name": "grant access"
+    },
+    "body":{
+        "code": 200,
+        "message": "ok"
+    }
+}
+grant_access_denied = {
+    "head": {
+        "type": "server response",
+        "name": "grant access"
+    },
+    "body":{
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+
+grant_access_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "create task"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
