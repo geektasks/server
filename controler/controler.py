@@ -1,20 +1,22 @@
 from controler.registration import registration, check_user
 from controler.authorization import authorization
-from controler.task import create_task
+from controler.task import create_task, edit_task, grant_access
 import serv.shortcuts as shortcuts
 
-
 TYPE = {
-	'action':'pass',
-    'action':'action'
+    'action': 'pass',
+    'action': 'action'
 
 }
-NAME ={
-	'registration':registration,
-	'authorization':authorization,
-    'check_user':check_user,
-    'create task': create_task
+NAME = {
+    'registration': registration,
+    'authorization': authorization,
+    'check_user': check_user,
+    'create task': create_task,
+    'edit task': edit_task,
+    'grant access': grant_access
 }
+
 
 class CControler:
 
@@ -36,4 +38,3 @@ class CControler:
         except Exception as err:
             print(err)
             return shortcuts.internal_server_error(err)
-
