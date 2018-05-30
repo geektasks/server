@@ -1,4 +1,4 @@
-unauthorized = {
+create_task_unauthorized = {
     "head": {
         "type": "server response",
         "name": "create task"
@@ -23,6 +23,7 @@ def task_created(task_id):
         }
     }
 
+
 ###########################################
 task_edit_ok = {
     "head": {
@@ -34,7 +35,7 @@ task_edit_ok = {
         "message": "ok"
     }
 }
-user_or_task_not_found = {
+task_edit_bad_request = {
     "head": {
         "type": "server response",
         "name": "edit task"
@@ -45,12 +46,12 @@ user_or_task_not_found = {
     }
 }
 
-task_edit_access_denied = {
+task_edit_forbidden = {
     "head": {
         "type": "server response",
         "name": "edit task"
     },
-    "body":{
+    "body": {
         "code": 403,
         "message": "forbidden"
     }
@@ -74,17 +75,29 @@ grant_access_ok = {
         "type": "server response",
         "name": "grant access"
     },
-    "body":{
+    "body": {
         "code": 200,
         "message": "ok"
     }
 }
-grant_access_denied = {
+
+grant_access_bad_request = {
     "head": {
         "type": "server response",
         "name": "grant access"
     },
     "body":{
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
+grant_access_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "grant access"
+    },
+    "body": {
         "code": 403,
         "message": "forbidden"
     }
@@ -96,6 +109,52 @@ grant_access_unauthorized = {
         "name": "create task"
     },
     "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+###############################
+deny_access_ok = {
+    "head": {
+        "type": "server response",
+        "name": "deny access"
+    },
+    "body":{
+        "code": 200,
+        "message": "ok"
+    }
+}
+
+deny_access_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "deny access"
+    },
+    "body":{
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
+deny_access_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "deny access"
+    },
+    "body":{
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+
+
+deny_access_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "deny access"
+    },
+    "body":{
         "code": 401,
         "message": "unauthorized"
     }
