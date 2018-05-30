@@ -61,6 +61,30 @@ class Repository:
         result = self.session.query(Tasks).filter_by(name=name).first()
         return result
 
+    def get_task_by_task_id(self, task_id):
+        return self.session.query(Tasks).filter_by(task_id=task_id).first()
+
+    def edit_task(self, task_id, attr, value):
+        '''
+
+        :param task_id:
+        :param attr: 'description' or 'name'
+        :param value: new value
+        :return:
+        '''
+        try:
+            task = self.get_task_by_task_id(task_id)
+            if attr == 'description':
+                task.description = value
+            if attr == 'name':
+                task.name = value
+            self.session.commit()
+
+            return True
+        except:
+            self.session.rollback()
+            return False
+
     def get_comments(self, task_id):
         comments_list = list()
         comments = self.session.query(Comments).filter_by(task_id=task_id).all()
