@@ -95,6 +95,12 @@ class Repository:
             self.session.rollback()
             return False
 
+    def get_comment(self, user_id, task_id, time):
+        return self.session.query(Comments).filter_by(user_id=user_id, task_id=task_id, time=time).first()
+
+    def get_comment_by_comment_id(self, comment_id):
+        return self.session.query(Comments).filter_by(comment_id=comment_id).first()
+
     def get_comments(self, task_id):
         comments_list = list()
         comments = self.session.query(Comments).filter_by(task_id=task_id).all()
