@@ -5,7 +5,7 @@ from repository.models_users import Users
 
 from repository.db_core import CBase
 
-
+# TODO добавить поля time / deadline
 class Tasks(CBase):
     __tablename__ = 'tasks'
     task_id = Column(INTEGER(), primary_key=True, autoincrement=True)
@@ -13,13 +13,8 @@ class Tasks(CBase):
     description = Column(LONGTEXT, nullable=True)
     status = Column(INTEGER(), nullable=False)
     creator_id = Column(INTEGER(), ForeignKey('users.user_id'), nullable=False)
-    # watcher_id = Column(Integer, ForeignKey('users.user_id')) # сделать отдельную таблицу: id / user_id / task_id
-    # performer_id = Column(Integer, ForeignKey('users.user_id'))# сделать отдельную таблицу: id / user_id / task_id
 
     creator = relationship(Users, foreign_keys=[creator_id])
-
-    # watchers = relationship(Users, foreign_keys=[watcher_id])
-    # performers = relationship(Users, foreign_keys=[performer_id])
 
     def __init__(self, creator_id, name, status=0, description=None):
         self.creator_id = creator_id

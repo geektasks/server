@@ -17,7 +17,7 @@ class Performers(CBase):
     task = relationship(Tasks, foreign_keys=[task_id])
 
     def __repr__(self):
-        return '{} {}'.format(self.name, self.description)
+        return '{} {}'.format(self.user_id, self.task_id)
 
 
 if __name__ == '__main__':

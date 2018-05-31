@@ -36,9 +36,21 @@ class Repository:
             self.session.rollback()
             return None
 
+    def del_(self, obj):
+        try:
+            self.session.delete(obj)
+            self.session.commit()
+            return True
+        except:
+            self.session.rollback()
+            return None
+
     def get_user(self, username):
         result = self.session.query(Users).filter_by(username=username).first()
         return result
+
+    def get_user_by_session_id(self, session_id):
+        return self.session.query(Users).filter_by(session_id=session_id).first()
 
     def get_pass(self, username):
         result = self.session.query(Users).filter_by(username=username).first().password
@@ -46,8 +58,9 @@ class Repository:
 
     def set_session_id(self, username, session_id):
         try:
+            # TODO сделать проверку на уникальность session_id
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
-            self.session.commit
+            self.session.commit()
             return 1
         except Exception as err:
             self.session.rollback()
@@ -57,6 +70,37 @@ class Repository:
         result = self.session.query(Tasks).filter_by(name=name).first()
         return result
 
+    def get_task_by_task_id(self, task_id):
+        return self.session.query(Tasks).filter_by(task_id=task_id).first()
+
+    def edit_task(self, task_id, attr, value):
+        '''
+
+        :param task_id:
+        :param attr: 'description' or 'name' or 'status
+        :param value: new value
+        :return:
+        '''
+        try:
+            task = self.get_task_by_task_id(task_id)
+            if attr == 'description':
+                task.description = value
+            if attr == 'name':
+                task.name = value
+            if attr == 'status':
+                task.status = value
+            self.session.commit()
+            return True
+        except:
+            self.session.rollback()
+            return False
+
+    def get_comment(self, user_id, task_id, time):
+        return self.session.query(Comments).filter_by(user_id=user_id, task_id=task_id, time=time).first()
+
+    def get_comment_by_comment_id(self, comment_id):
+        return self.session.query(Comments).filter_by(comment_id=comment_id).first()
+
     def get_comments(self, task_id):
         comments_list = list()
         comments = self.session.query(Comments).filter_by(task_id=task_id).all()
@@ -65,6 +109,12 @@ class Repository:
                 user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
                 comments_list.append({'user': user, 'text': comment.text, 'time': comment.time})
         return comments_list
+
+    def get_watcher(self, task_id, user_id):
+        return self.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first()
+
+    def get_performer(self, task_id, user_id):
+        return self.session.query(Performers).filter_by(task_id=task_id, user_id=user_id).first()
 
 
 if __name__ == '__main__':
