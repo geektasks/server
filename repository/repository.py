@@ -77,7 +77,7 @@ class Repository:
         '''
 
         :param task_id:
-        :param attr: 'description' or 'name'
+        :param attr: 'description' or 'name' or 'status
         :param value: new value
         :return:
         '''
@@ -87,8 +87,9 @@ class Repository:
                 task.description = value
             if attr == 'name':
                 task.name = value
+            if attr == 'status':
+                task.status = value
             self.session.commit()
-
             return True
         except:
             self.session.rollback()
