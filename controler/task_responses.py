@@ -288,3 +288,103 @@ change_status_forbidden = {
         "message": "forbidden"
     }
 }
+
+##############################
+create_comment_ok = {
+    "head": {
+        "type": "server response",
+        "name": "create comment"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok",
+        "id": "[идентификатор комментария]"
+    }
+}
+
+
+def comment_created(comment_id):
+    return {"head": {
+        "type": "server response",
+        "name": "create comment"
+    },
+        "body": {
+            "code": 200,
+            "message": "ok",
+            "id": "{}".format(comment_id)
+        }
+    }
+
+
+create_comment_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "create comment"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+create_comment_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "create comment"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+create_comment_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "create comment"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+#########################################
+
+delete_comment_ok = {
+    "head": {
+        "type": "server response",
+        "name": "delete comment"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+delete_comment_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "delete comment"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+delete_comment_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "delete comment"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+delete_comment_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "delete comment"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}

@@ -1,7 +1,7 @@
 from controler.registration import registration, check_user
 from controler.authorization import authorization
 from controler.task import create_task, edit_task, grant_access, deny_access, assign_performer, remove_performer, \
-    change_status
+    change_status, create_comment, delete_comment
 import serv.shortcuts as shortcuts
 
 TYPE = {
@@ -19,7 +19,9 @@ NAME = {
     'deny access': deny_access,
     'assign performer': assign_performer,
     'remove performer': remove_performer,
-    'change status': change_status
+    'change status': change_status,
+    'create comment': create_comment,
+    'delete comment': delete_comment
 }
 
 

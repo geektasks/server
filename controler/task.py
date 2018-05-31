@@ -2,6 +2,7 @@ from repository.repository import Repository
 from repository.models_tasks import Tasks
 from repository.models_watchers import Watchers
 from repository.models_performers import Performers
+from repository.models_comments import Comments
 from controler.task_responses import *
 
 rep = Repository()
@@ -136,3 +137,38 @@ def change_status(body, session_id):
                 pass
     else:
         return change_status_unauthorized
+
+
+def create_comment(body, session_id):
+    # TODO сделать проверку на право пользователя оставить комментарий
+    try:
+        user_id = rep.get_user_by_session_id(session_id).user_id
+    except:
+        return create_comment_unauthorized
+    else:
+        try:
+            task_id = rep.get_task_by_task_id(body.get('id')).task_id
+        except:
+            return create_comment_bad_request
+        else:
+            comment = Comments(user_id=user_id, task_id=task_id, text=body.get('text'), time=body.get('time'))
+            if rep.add(comment):
+                comment_id = rep.get_comment(user_id=user_id, task_id=task_id, time=body.get('time')).comment_id
+                return comment_created(comment_id)
+            else:
+                pass
+
+
+def delete_comment(body, session_id):
+    # TODO сделать проверку на право пользователя удалить комментарий
+    if rep.get_user_by_session_id(session_id):
+        comment = rep.get_comment_by_comment_id(body.get('id'))
+        if comment:
+            if rep.del_(comment):
+                return delete_comment_ok
+            else:
+                pass
+        else:
+            return delete_comment_bad_request
+    else:
+        return delete_comment_unauthorized
