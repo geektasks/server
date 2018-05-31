@@ -246,3 +246,45 @@ remove_performer_forbidden = {
         "message": "forbidden"
     }
 }
+
+#####################################
+change_status_task_ok = {
+    "head": {
+        "type": "server response",
+        "name": "change status"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+change_status_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "change status"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+change_status_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "change status"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+change_status_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "change status"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}
