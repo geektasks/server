@@ -106,6 +106,9 @@ class Repository:
     def get_watcher(self, task_id, user_id):
         return self.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first()
 
+    def get_performer(self, task_id, user_id):
+        return self.session.query(Performers).filter_by(task_id=task_id, user_id=user_id).first()
+
 
 if __name__ == '__main__':
     rep = Repository()
