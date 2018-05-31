@@ -119,3 +119,20 @@ def remove_performer(body, session_id):
                 pass
     else:
         return remove_performer_unauthorized
+
+
+def change_status(body, session_id):
+    # TODO сделать проверку на права пользователя менять статус задачи
+    # TODO сделать проверку на значение поля статус {0, 1, 2}
+    if rep.get_user_by_session_id(session_id):
+        try:
+            task_id = rep.get_task_by_task_id(body.get('id')).task_id
+        except:
+            return change_status_bad_request
+        else:
+            if rep.edit_task(task_id, 'status', body.get('status')):
+                return change_status_task_ok
+            else:
+                pass
+    else:
+        return change_status_unauthorized
