@@ -86,7 +86,7 @@ grant_access_bad_request = {
         "type": "server response",
         "name": "grant access"
     },
-    "body":{
+    "body": {
         "code": 400,
         "message": "bad request"
     }
@@ -120,7 +120,7 @@ deny_access_ok = {
         "type": "server response",
         "name": "deny access"
     },
-    "body":{
+    "body": {
         "code": 200,
         "message": "ok"
     }
@@ -131,7 +131,7 @@ deny_access_bad_request = {
         "type": "server response",
         "name": "deny access"
     },
-    "body":{
+    "body": {
         "code": 400,
         "message": "bad request"
     }
@@ -142,20 +142,107 @@ deny_access_forbidden = {
         "type": "server response",
         "name": "deny access"
     },
-    "body":{
+    "body": {
         "code": 403,
         "message": "forbidden"
     }
 }
-
 
 deny_access_unauthorized = {
     "head": {
         "type": "server response",
         "name": "deny access"
     },
-    "body":{
+    "body": {
         "code": 401,
         "message": "unauthorized"
+    }
+}
+
+#######################################
+
+assign_performer_ok = {
+    "head": {
+        "type": "server response",
+        "name": "assign performer"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+
+assign_performer_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "assign performer"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
+assign_performer_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "assign performer"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+assign_performer_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "assign performer"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+
+#######################################
+remove_performer_ok = {
+    "head": {
+        "type": "server response",
+        "name": "remove performer"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+remove_performer_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "remove performer"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+remove_performer_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "remove performer"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+remove_performer_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "remove performer"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
     }
 }
