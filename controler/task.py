@@ -160,15 +160,17 @@ def create_comment(body, session_id):
 
 
 def delete_comment(body, session_id):
-    # TODO сделать проверку на право пользователя удалить комментарий
-    if rep.get_user_by_session_id(session_id):
+    try:
+        user_id = rep.get_user_by_session_id(session_id).user_id
+    except:
+        return delete_comment_unauthorized
+    else:
         comment = rep.get_comment_by_comment_id(body.get('id'))
-        if comment:
-            if rep.del_(comment):
-                return delete_comment_ok
+        if comment.comment_id and comment.task_id:
+            if comment.user_id == user_id:
+                if rep.del_(comment):
+                    return delete_comment_ok
             else:
-                pass
+                return delete_comment_forbidden
         else:
             return delete_comment_bad_request
-    else:
-        return delete_comment_unauthorized
