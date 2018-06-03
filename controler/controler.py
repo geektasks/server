@@ -12,7 +12,7 @@ TYPE = {
 NAME = {
     'registration': registration,
     'authorization': authorization,
-    'check_user': check_user,
+    'check user': check_user,
     'create task': create_task,
     'edit task': edit_task,
     'grant access': grant_access,
