@@ -9,6 +9,12 @@ def create_config(path):
     config.set("Settings", "ip", "10.72.72.30")
     config.set("Settings", "port", "8000")
 
+    config.add_section("Database")
+    config.set("Database", "username", "serv_root")
+    config.set("Database", "password", "srv18180")
+    config.set("Database", "host", "10.72.72.30")
+    config.set("Database", "db", "serverdb")
+
     with open(path, "w") as config_file:
         config.write(config_file)
 
@@ -26,5 +32,5 @@ def get_setting(path, section, setting):
     return value
 
 if __name__ == "__main__":
-    path = "settings.ini"
+    path = "../settings.ini"
     create_config(path)
