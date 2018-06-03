@@ -2,13 +2,16 @@ import asyncio
 from serv.async_serv import ServerClientProtocol
 
 import sys
-try:
-#    sys.stdout=open("log.txt","w")
-#    sys.stderr=open("log_err.txt","w")
 
+try:
+    #    sys.stdout=open("log.txt","w")
+    #    sys.stderr=open("log_err.txt","w")
 
     from serv.create_config import get_setting
+
     path = 'settings.ini'
+    path = 'serv/settings.ini'
+
     ip = get_setting(path, 'Settings', 'ip')
     port = get_setting(path, 'Settings', 'port')
 

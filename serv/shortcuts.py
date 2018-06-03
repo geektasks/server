@@ -72,7 +72,8 @@ def auth_done(session_id):
     },
     "body":{
         "code": 200,
-        "message": '%i'%(session_id)
+        "message": "Ok",
+        "session id": '%i'%(session_id)
     }
 }
 auth_err = {
