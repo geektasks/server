@@ -10,12 +10,19 @@ from repository.models_performers import Performers
 from repository.models_watchers import Watchers
 
 from repository.db_core import CBase
+from serv.create_config import get_setting
 
 
 class Repository:
 
     def __init__(self):
-        self.engine = create_engine('mysql+mysqlconnector://serv_root:srv18180@10.72.72.30/serverdb')
+        path = 'settings.ini'
+        username = get_setting(path, 'Database', 'username')
+        password = get_setting(path, 'Database', 'password')
+        host = get_setting(path, 'Database', 'host')
+        db = get_setting(path, 'Database', 'db')
+
+        self.engine = create_engine('mysql+mysqlconnector://{}:{}@{}/{}'.format(username, password, host, db))
         self.session = self.get_session()
         self.create_base()
 
