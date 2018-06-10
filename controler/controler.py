@@ -34,10 +34,10 @@ class CControler:
             if request['head']['type'] in TYPE and request['head']['name'] in NAME:
                 controller = NAME.get(request['head']['name'])
 
-                if 'session id' not in request['head']:
+                if 'session_id' not in request['head']:
                     return controller(request['body'])
                 else:
-                    return controller(request['body'], request['head']['session id'])
+                    return controller(request['body'], request['head']['session_id'])
 
             else:
                 print('unknown_request')
