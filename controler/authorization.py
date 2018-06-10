@@ -8,7 +8,7 @@ def authorization(body):
     print(body)
     if serverdb.get_pass(body['name']) == body['password']:
         session_id = randrange(1000000000, 99999999999)
-        if serverdb.set_session_id(body['name'], randrange(1000000000, 99999999999)):
+        if serverdb.set_session_id(body['name'], session_id):
             return auth_done(session_id)
         else:
             return internal_server_error
