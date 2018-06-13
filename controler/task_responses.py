@@ -25,6 +25,18 @@ def task_created(task_id):
 
 
 ###########################################
+def tasks_get(tasks_list):
+    return {
+        'head': {
+            'type': 'server response',
+            'name': 'get all tasks'
+        },
+        'body': {
+            'code': 200,
+            'message': tasks_list
+        }
+    }
+###########################################
 task_edit_ok = {
     "head": {
         "type": "server response",
