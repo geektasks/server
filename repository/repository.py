@@ -69,11 +69,9 @@ class Repository:
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
             print(self.session.query(Users).filter_by(username=username).first().session_id)
             self.session.commit()
-            print('я тут')
             return 1
         except Exception as err:
             self.session.rollback()
-            prin
             return err
 
     def get_task(self, name):
