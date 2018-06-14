@@ -57,7 +57,9 @@ class Repository:
         return result
 
     def get_user_by_session_id(self, session_id):
-        return self.session.query(Users).filter_by(session_id=session_id).first()
+        # self.session.commit()
+        result = self.session.query(Users).filter_by(session_id=session_id).first()
+        return result
 
     def get_pass(self, username):
         result = self.session.query(Users).filter_by(username=username).first().password
@@ -132,5 +134,5 @@ class Repository:
 if __name__ == '__main__':
     rep = Repository()
     # rep.add(Users('pilik', '1234','pilik@mail.ru'))
-    print(rep.get_user('pilik').session_id)
+    # print(rep.get_user('pilik').session_id)
     # print(rep)
