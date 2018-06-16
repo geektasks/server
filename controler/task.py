@@ -14,9 +14,9 @@ def get_all_tasks(body, session_id):
         return create_task_unauthorized
     else:
         tasks = rep.get_all_tasks(creator_id)
-        tasks_list = []
+        tasks_list = {}
         for task in tasks:
-            tasks_list.append(task.task_id)
+            tasks_list[task.task_id] = task.name
         return tasks_get(tasks_list)
 
 
