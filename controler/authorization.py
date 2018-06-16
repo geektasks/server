@@ -6,7 +6,8 @@ serverdb = Repository()
 
 def authorization(body):
     print(body)
-    if serverdb.get_pass(body['name']) == body['password']:
+    # if serverdb.get_pass(body['name']) == body['password']:
+    if serverdb.get_user(body['name']) and serverdb.get_pass(body['name']) == body['password']:
         session_id = randrange(10000, 99999)
         if serverdb.set_session_id(body['name'], session_id) == 1:
             print('урра')

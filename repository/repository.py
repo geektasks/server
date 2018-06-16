@@ -57,12 +57,13 @@ class Repository:
         return result
 
     def get_user_by_session_id(self, session_id):
-        # self.session.commit()
+        self.session.commit()
         result = self.session.query(Users).filter_by(session_id=session_id).first()
         return result
 
     def get_pass(self, username):
         result = self.session.query(Users).filter_by(username=username).first().password
+        print('get pass result', result)
         return result
 
     def set_session_id(self, username, session_id):
