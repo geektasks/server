@@ -134,5 +134,5 @@ class Repository:
 if __name__ == '__main__':
     rep = Repository()
     # rep.add(Users('pilik', '1234','pilik@mail.ru'))
-    print(rep.get_user('pilik').session_id)
+    # print(rep.get_user('pilik').session_id)
     # print(rep)
