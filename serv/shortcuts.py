@@ -46,7 +46,7 @@ reg_error = {
 check_user_err = {
     "head": {
         "type": "server response",
-        "name": "check_user"
+        "name": "check user"
     },
     "body": {
         "code": 409,
@@ -57,7 +57,7 @@ check_user_err = {
 check_user_ok = {
             "head": {
                 "type": "server response",
-                "name": "check_user"
+                "name": "check user"
             },
             "body": {
                 "code": 200,

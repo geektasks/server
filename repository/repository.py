@@ -57,16 +57,20 @@ class Repository:
         return result
 
     def get_user_by_session_id(self, session_id):
-        return self.session.query(Users).filter_by(session_id=session_id).first()
+        self.session.commit()
+        result = self.session.query(Users).filter_by(session_id=session_id).first()
+        return result
 
     def get_pass(self, username):
         result = self.session.query(Users).filter_by(username=username).first().password
+        print('get pass result', result)
         return result
 
     def set_session_id(self, username, session_id):
         try:
             # TODO сделать проверку на уникальность session_id
             self.session.query(Users).filter_by(username=username).first().session_id = session_id
+            print(self.session.query(Users).filter_by(username=username).first().session_id)
             self.session.commit()
             return 1
         except Exception as err:
@@ -75,6 +79,10 @@ class Repository:
 
     def get_task(self, name):
         result = self.session.query(Tasks).filter_by(name=name).first()
+        return result
+
+    def get_all_tasks(self, creator_id):
+        result = self.session.query(Tasks).filter_by(creator_id = creator_id).all()
         return result
 
     def get_task_by_task_id(self, task_id):
@@ -127,5 +135,5 @@ class Repository:
 if __name__ == '__main__':
     rep = Repository()
     # rep.add(Users('pilik', '1234','pilik@mail.ru'))
-    print(rep.get_user('ddimans').password)
-    print(rep)
+    # print(rep.get_user('pilik').session_id)
+    # print(rep)

@@ -9,7 +9,7 @@ from repository.db_core import CBase
 class Tasks(CBase):
     __tablename__ = 'tasks'
     task_id = Column(INTEGER(), primary_key=True, autoincrement=True)
-    name = Column(VARCHAR(45), nullable=False, unique=True)
+    name = Column(VARCHAR(45), nullable=False, unique=False)
     description = Column(LONGTEXT, nullable=True)
     status = Column(INTEGER(), nullable=False)
     creator_id = Column(INTEGER(), ForeignKey('users.user_id'), nullable=False)

@@ -7,6 +7,19 @@ from controler.task_responses import *
 
 rep = Repository()
 
+def get_all_tasks(body, session_id):
+    try:
+        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+    except:
+        return create_task_unauthorized
+    else:
+        tasks = rep.get_all_tasks(creator_id)
+        tasks_list = {}
+        for task in tasks:
+            tasks_list[task.task_id] = task.name
+        return tasks_get(tasks_list)
+
+
 
 def create_task(body, session_id):
     try:
