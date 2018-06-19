@@ -36,6 +36,20 @@ def tasks_get(tasks_list):
             'message': tasks_list
         }
     }
+
+def task_by_id(task):
+    return {
+        "head": {
+                "type": "server response",
+                "name": "get task by id"
+            },
+        'body': {
+                    'code': 200,
+                    'message': 'ok',
+                    'task name': task.name,
+                    'description': task.description
+                }
+    }
 ###########################################
 task_edit_ok = {
     "head": {
