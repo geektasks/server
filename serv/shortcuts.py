@@ -97,3 +97,15 @@ hello= {
         'message':''
         }
     }
+def search(users):
+    return {
+        'head':{
+            'type':'server response',
+            'name':'search user'
+            },
+        'body':{
+            'Code':'',
+            'message':'',
+            'users': users
+            }
+        }

@@ -1,5 +1,6 @@
 from controler.registration import registration, check_user
 from controler.authorization import authorization
+from controler.user import search_user
 from controler.task import create_task, edit_task, get_task_by_id, grant_access, deny_access, assign_performer, remove_performer, \
     change_status, create_comment, delete_comment, get_all_tasks
 import serv.shortcuts as shortcuts
@@ -23,7 +24,8 @@ NAME = {
     'remove performer': remove_performer,
     'change status': change_status,
     'create comment': create_comment,
-    'delete comment': delete_comment
+    'delete comment': delete_comment,
+    'search user': search_user
 }
 
 

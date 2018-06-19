@@ -131,6 +131,9 @@ class Repository:
     def get_performer(self, task_id, user_id):
         return self.session.query(Performers).filter_by(task_id=task_id, user_id=user_id).first()
 
+    def get_all_users(self):
+        return self.session.query(Users).all()
+
 
 if __name__ == '__main__':
     rep = Repository()
