@@ -11,13 +11,26 @@ def get_all_tasks(body, session_id):
     try:
         creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
     except:
-        return create_task_unauthorized
+        return create_task_unauthorized # изменить возврат ошибки
     else:
         tasks = rep.get_all_tasks(creator_id)
         tasks_list = {}
         for task in tasks:
             tasks_list[task.task_id] = task.name
         return tasks_get(tasks_list)
+
+def get_task_by_id(body, session_id):
+    try:
+        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+    except:
+        return create_task_unauthorized # изменить возврат ошибки
+    try:
+        task = rep.get_task_by_task_id(body['id'])
+        return task_by_id(task)
+
+    except Exception as err:
+        return task_edit_bad_request # изменить возврат ошибки
+
 
 
 
