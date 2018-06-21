@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98d5aa9e-6ae4-4f5d-a07e-352f27f496c0" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/controler/user.py" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/server.git.iml" afterPath="$PROJECT_DIR$/.idea/server.git.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -10,8 +9,7 @@
       <change beforePath="$PROJECT_DIR$/controler/task.py" afterPath="$PROJECT_DIR$/controler/task.py" />
       <change beforePath="$PROJECT_DIR$/controler/task_responses.py" afterPath="$PROJECT_DIR$/controler/task_responses.py" />
       <change beforePath="$PROJECT_DIR$/repository/repository.py" afterPath="$PROJECT_DIR$/repository/repository.py" />
-      <change beforePath="$PROJECT_DIR$/serv/shortcuts.py" afterPath="$PROJECT_DIR$/serv/shortcuts.py" />
-      <change beforePath="$PROJECT_DIR$/settings.ini" afterPath="$PROJECT_DIR$/settings.ini" />
+      <change beforePath="$PROJECT_DIR$/serv/async_serv.py" afterPath="$PROJECT_DIR$/serv/async_serv.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,23 +23,45 @@
       <file leaf-file-name="repository.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repository/repository.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="225">
+              <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
-                <marker date="1529485759290" expanded="true" signature="551:4737" ph="..." />
-                <marker date="1529485759290" expanded="true" signature="2776:2840" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.ini" pinned="false" current-in-tab="true">
+      <file leaf-file-name="async_serv.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/serv/async_serv.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="124">
+              <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/settings.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+            <state relative-caret-position="170">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controler/user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-102">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -59,8 +79,8 @@
       <file leaf-file-name="models_users.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repository/models_users.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -68,42 +88,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shortcuts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/serv/shortcuts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="controler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controler/controler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controler/task.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-              <folding />
+            <state relative-caret-position="170">
+              <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#59#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,9 +103,24 @@
       <file leaf-file-name="task_responses.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controler/task_responses.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="-1507">
+              <caret line="327" column="5" lean-forward="false" selection-start-line="327" selection-start-column="5" selection-end-line="327" selection-end-column="5" />
+              <folding>
+                <marker date="1529568405742" expanded="true" signature="6089:6095" ph="..." />
+                <marker date="1529568405742" expanded="true" signature="6089:6097" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controler/task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+              <folding>
+                <marker date="1529568405732" expanded="true" signature="6345:6358" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +149,6 @@
         <option value="$PROJECT_DIR$/controler/task_responses.py" />
         <option value="$PROJECT_DIR$/run_serv.py" />
         <option value="$PROJECT_DIR$/serv/shortcuts.py" />
-        <option value="$PROJECT_DIR$/serv/async_serv.py" />
         <option value="$PROJECT_DIR$/repository/__init__.py" />
         <option value="$PROJECT_DIR$/repository/models_users.py" />
         <option value="$PROJECT_DIR$/controler/task.py" />
@@ -150,6 +156,7 @@
         <option value="$PROJECT_DIR$/controler/controler.py" />
         <option value="$PROJECT_DIR$/repository/repository.py" />
         <option value="$PROJECT_DIR$/controler/authorization.py" />
+        <option value="$PROJECT_DIR$/serv/async_serv.py" />
       </list>
     </option>
   </component>
@@ -180,6 +187,11 @@
             <path>
               <item name="server.git" type="b2602c69:ProjectViewProjectNode" />
               <item name="server.git" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="server.git" type="b2602c69:ProjectViewProjectNode" />
+              <item name="server.git" type="462c0819:PsiDirectoryNode" />
+              <item name="serv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -296,8 +308,8 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14136904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.547546" sideWeight="0.5029762" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39263803" sideWeight="0.49702382" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34815952" sideWeight="0.50595236" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31748468" sideWeight="0.4940476" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -335,9 +347,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -345,7 +354,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2618">
           <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1529568405732" expanded="true" signature="6345:6358" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -361,7 +372,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -369,7 +379,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6613">
           <caret line="389" column="1" lean-forward="false" selection-start-line="389" selection-start-column="1" selection-end-line="389" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1529568405742" expanded="true" signature="6089:6095" ph="..." />
+            <marker date="1529568405742" expanded="true" signature="6089:6097" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -379,8 +392,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1529485759290" expanded="true" signature="551:4737" ph="..." />
-            <marker date="1529485759290" expanded="true" signature="2776:2840" ph="..." />
           </folding>
         </state>
       </provider>
@@ -389,9 +400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="14" column="17" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -418,7 +426,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -426,9 +436,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -436,7 +443,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6613">
           <caret line="389" column="1" lean-forward="false" selection-start-line="389" selection-start-column="1" selection-end-line="389" selection-end-column="1" />
-          <folding />
+          <folding>
+            <marker date="1529568405742" expanded="true" signature="6089:6095" ph="..." />
+            <marker date="1529568405742" expanded="true" signature="6089:6097" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -452,7 +462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
           <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -469,8 +478,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1529485759290" expanded="true" signature="551:4737" ph="..." />
-            <marker date="1529485759290" expanded="true" signature="2776:2840" ph="..." />
           </folding>
         </state>
       </provider>
@@ -519,8 +526,6 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1529485759290" expanded="true" signature="551:4737" ph="..." />
-            <marker date="1529485759290" expanded="true" signature="2776:2840" ph="..." />
           </folding>
         </state>
       </provider>
@@ -615,9 +620,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controler/task_responses.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="-1507">
+          <caret line="327" column="5" lean-forward="false" selection-start-line="327" selection-start-column="5" selection-end-line="327" selection-end-column="5" />
+          <folding>
+            <marker date="1529568405742" expanded="true" signature="6089:6095" ph="..." />
+            <marker date="1529568405742" expanded="true" signature="6089:6097" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -662,8 +670,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/repository/models_users.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -674,17 +682,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="14" column="44" lean-forward="false" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#14#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controler/task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="66" column="28" lean-forward="false" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="391">
+          <caret line="172" column="0" lean-forward="false" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+          <folding>
+            <marker date="1529568405732" expanded="true" signature="6345:6358" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -692,16 +699,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/serv/async_serv.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        <state relative-caret-position="124">
+          <caret line="38" column="49" lean-forward="true" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -709,26 +716,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
           <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controler/controler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="170">
+          <caret line="25" column="37" lean-forward="false" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/repository/repository.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="62" column="0" lean-forward="false" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
-            <marker date="1529485759290" expanded="true" signature="551:4737" ph="..." />
-            <marker date="1529485759290" expanded="true" signature="2776:2840" ph="..." />
           </folding>
         </state>
       </provider>
@@ -743,8 +749,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/settings.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        <state relative-caret-position="170">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
       </provider>

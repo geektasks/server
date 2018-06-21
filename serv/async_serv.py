@@ -41,6 +41,8 @@ class ServerClientProtocol(asyncio.Protocol):
             json = internal_server_error(err)
             answer = json_to_bytes(json)
             self.transport.write(answer)
+            print('Data sent: {}'.format(answer))
+            print(err)
             return err
 
     def connection_lost(self, exc):
