@@ -56,6 +56,10 @@ class Repository:
         result = self.session.query(Users).filter_by(username=username).first()
         return result
 
+    def get_user_by_user_id(self, user_id):
+        result = self.session.query(Users).filter_by(user_id=user_id).first()
+        return result
+
     def get_user_by_session_id(self, session_id):
         self.session.commit()
         result = self.session.query(Users).filter_by(session_id=session_id).first()
@@ -133,6 +137,12 @@ class Repository:
 
     def get_all_users(self):
         return self.session.query(Users).all()
+
+    def get_all_performers(self, task_id):
+        return self.session.query(Performers).filter_by(task_id=task_id).all()
+
+    def get_all_watchers(self, task_id):
+        return self.session.query(Watchers).filter_by(task_id=task_id).all()
 
 
 if __name__ == '__main__':

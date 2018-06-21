@@ -7,11 +7,12 @@ from controler.task_responses import *
 
 rep = Repository()
 
+
 def get_all_tasks(body, session_id):
     try:
         creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
     except:
-        return create_task_unauthorized # изменить возврат ошибки
+        return create_task_unauthorized  # изменить возврат ошибки
     else:
         tasks = rep.get_all_tasks(creator_id)
         tasks_list = {}
@@ -19,19 +20,18 @@ def get_all_tasks(body, session_id):
             tasks_list[task.task_id] = task.name
         return tasks_get(tasks_list)
 
+
 def get_task_by_id(body, session_id):
     try:
         creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
     except:
-        return create_task_unauthorized # изменить возврат ошибки
+        return create_task_unauthorized  # изменить возврат ошибки
     try:
         task = rep.get_task_by_task_id(body['id'])
         return task_by_id(task)
 
     except Exception as err:
-        return task_edit_bad_request # изменить возврат ошибки
-
-
+        return task_edit_bad_request  # изменить возврат ошибки
 
 
 def create_task(body, session_id):
@@ -146,6 +146,32 @@ def remove_performer(body, session_id):
                 pass
     else:
         return remove_performer_unauthorized
+
+
+def get_all_performers(body, session_id):
+    if rep.get_user_by_session_id(session_id):
+        performers_list = list()
+        task_id = body.get('id')
+        performers = rep.get_all_performers(task_id=task_id)
+        for performer in performers:
+            username = rep.get_user_by_user_id(performer.user_id).username
+            performers_list.append(username)
+        return get_all_performers_ok(performers_list)
+    else:
+        return get_all_performers_unauthorized
+
+
+def get_all_watchers(body, session_id):
+    if rep.get_user_by_session_id(session_id):
+        watchers_list = list()
+        task_id = body.get('id')
+        watchers = rep.get_all_watchers(task_id=task_id)
+        for performer in watchers:
+            username = rep.get_user_by_user_id(performer.user_id).username
+            watchers_list.append(username)
+        return get_all_watchers_ok(watchers_list)
+    else:
+        return get_all_watchers_unauthorized
 
 
 def change_status(body, session_id):
