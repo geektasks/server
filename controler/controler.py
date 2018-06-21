@@ -2,7 +2,7 @@ from controler.registration import registration, check_user
 from controler.authorization import authorization
 from controler.user import search_user
 from controler.task import create_task, edit_task, get_task_by_id, grant_access, deny_access, assign_performer, remove_performer, \
-    change_status, create_comment, delete_comment, get_all_tasks
+    change_status, create_comment, delete_comment, get_all_tasks, get_all_performers, get_all_watchers
 import serv.shortcuts as shortcuts
 
 TYPE = {
@@ -25,7 +25,9 @@ NAME = {
     'change status': change_status,
     'create comment': create_comment,
     'delete comment': delete_comment,
-    'search user': search_user
+    'search user': search_user,
+    'get all performers': get_all_performers,
+    'get all watchers': get_all_watchers
 }
 
 

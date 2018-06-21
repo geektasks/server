@@ -37,19 +37,22 @@ def tasks_get(tasks_list):
         }
     }
 
+
 def task_by_id(task):
     return {
         "head": {
-                "type": "server response",
-                "name": "get task by id"
-            },
+            "type": "server response",
+            "name": "get task by id"
+        },
         'body': {
-                    'code': 200,
-                    'message': 'ok',
-                    'task name': task.name,
-                    'description': task.description
-                }
+            'code': 200,
+            'message': 'ok',
+            'task name': task.name,
+            'description': task.description
+        }
     }
+
+
 ###########################################
 task_edit_ok = {
     "head": {
@@ -270,6 +273,58 @@ remove_performer_forbidden = {
     "body": {
         "code": 403,
         "message": "forbidden"
+    }
+}
+
+
+#####################################
+def get_all_performers_ok(performers_list):
+    return {"head": {
+        "type": "server response",
+        "name": "get all performers"
+    },
+        "body": {
+            "code": 200,
+            "message": "ok",
+            "performers": performers_list
+        }
+    }
+
+
+get_all_performers_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "get all performers"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+
+#####################################
+def get_all_watchers_ok(watchers_list):
+    return {"head": {
+        "type": "server response",
+        "name": "get all watchers"
+    },
+        "body": {
+            "code": 200,
+            "message": "ok",
+            "watchers": watchers_list
+        }
+    }
+
+
+get_all_watchers_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "get all watchers"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
     }
 }
 
