@@ -7,6 +7,7 @@ from serv.model_serv import Server
 from serv.model_msg import CMessage
 from serv.shortcuts import internal_server_error
 
+
 class ServerClientProtocol(asyncio.Protocol):
     server = Server()
     controler = CControler
@@ -19,30 +20,28 @@ class ServerClientProtocol(asyncio.Protocol):
 
         print('Connection from {}'.format(peername))
         self.transport = transport
-        #self.transport.write('Hello')
-
+        # self.transport.write('Hello')
 
     def data_received(self, data):
         print('Data received: {}'.format(data))
 
         try:
-            message=bytes_to_json(data)
-            #Передаем декодирование сообщение на обратоку.
-            answer=self.controler.handle(message)
+            message = bytes_to_json(data)
+            # Передаем декодирование сообщение на обратоку.
+            answer = self.controler.handle(message)
 
-            #Кодируем
-            data=json_to_bytes(answer)
+            # Кодируем
+            data = json_to_bytes(answer)
 
-            #отсылаем ответ
-            print(answer)
+            # отсылаем ответ
+            print('Answer: ', answer)
             self.transport.write(data)
+            print('Data sent: {}'.format(answer))
         except Exception as err:
-            json=internal_server_error(err)
-            answer=json_to_bytes(json)
+            json = internal_server_error(err)
+            answer = json_to_bytes(json)
             self.transport.write(answer)
             return err
-
-
 
     def connection_lost(self, exc):
         print('The server closed the connection')
@@ -53,6 +52,6 @@ class ServerClientProtocol(asyncio.Protocol):
         print(self.server.client_dict)
 
 #    @property
- #   def controler(self):
+#   def controler(self):
 #
- #       return self.controler
+#       return self.controler
