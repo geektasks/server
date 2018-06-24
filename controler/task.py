@@ -40,7 +40,13 @@ def create_task(body, session_id):
     except:
         return create_task_unauthorized
     else:
-        task = Tasks(creator_id=creator_id, name=body.get('name'), description=body.get('description'))
+        task = Tasks(creator_id=creator_id,
+                     name=body.get('name'),
+                     description=body.get('description'),
+                     date_create=body.get('date_create'),
+                     date_deadline=body.get('date_deadline'),
+                     date_reminder=body.get('date_reminder'),
+                     time_reminder=body.get('time_reminder'))
         if rep.add(task):
             task_id = rep.get_task(name=body.get('name')).task_id
             return task_created(task_id)
