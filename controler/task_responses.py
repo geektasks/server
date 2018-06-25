@@ -48,7 +48,11 @@ def task_by_id(task):
             'code': 200,
             'message': 'ok',
             'task name': task.name,
-            'description': task.description
+            'description': task.description,
+            'date_create': task.date_create,
+            'date_deadline': task.date_deadline,
+            'date_reminder': task.date_reminder,
+            'time_reminder': task.time_reminder
         }
     }
 
