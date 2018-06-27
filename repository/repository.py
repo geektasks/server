@@ -96,7 +96,7 @@ class Repository:
         '''
 
         :param task_id:
-        :param attr: 'description' or 'name' or 'status
+        :param attr: 'description' or 'name' or 'status' or 'date_reminder' or 'time_reminder'
         :param value: new value
         :return:
         '''
@@ -108,6 +108,10 @@ class Repository:
                 task.name = value
             if attr == 'status':
                 task.status = value
+            if attr == 'date_reminder':
+                task.date_reminder = value
+            if attr == 'time_reminder':
+                task.time_reminder = value
             self.session.commit()
             return True
         except:

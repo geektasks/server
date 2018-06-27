@@ -102,7 +102,71 @@ task_edit_unauthorized = {
 }
 
 ###########################################################
+edit_date_reminder_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "edit date reminder"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
 
+edit_date_reminder_ok = {
+    "head": {
+        "type": "server response",
+        "name": "edit date reminder"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+edit_date_reminder_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "edit date reminder"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+#####################################
+edit_time_reminder_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "edit time reminder"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+edit_time_reminder_ok = {
+    "head": {
+        "type": "server response",
+        "name": "edit time reminder"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+edit_time_reminder_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "edit time reminder"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
+#####################################
 grant_access_ok = {
     "head": {
         "type": "server response",

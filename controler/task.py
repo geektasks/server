@@ -17,7 +17,10 @@ def get_all_tasks(body, session_id):
         tasks = rep.get_all_tasks(creator_id)
         tasks_list = {}
         for task in tasks:
-            tasks_list[task.task_id] = task.name
+            tasks_list[task.task_id] = {'name': task.name,
+                                        'description': task.description,
+                                        'date_reminder': task.date_reminder,
+                                        'time_reminder': task.time_reminder}
         return tasks_get(tasks_list)
 
 
@@ -73,6 +76,46 @@ def edit_task(body, session_id):
     except Exception as err:
         rep.session.rollback()
         return task_edit_bad_request
+
+
+def edit_date_reminder(body, session_id):
+    try:
+        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+        # TODO проверить права Пользователя на редактирование
+    except:
+        return edit_date_reminder_unauthorized
+    try:
+        task_id = rep.get_task_by_task_id(body.get('id')).task_id
+        attr = 'date_reminder'
+        value = body.get('date_reminder')
+        if rep.edit_task(task_id, attr, value):
+            return edit_date_reminder_ok
+        else:
+            # ???
+            pass
+    except Exception as err:
+        rep.session.rollback()
+        return edit_date_reminder_bad_request
+
+
+def edit_time_reminder(body, session_id):
+    try:
+        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+        # TODO проверить права Пользователя на редактирование
+    except:
+        return edit_time_reminder_unauthorized
+    try:
+        task_id = rep.get_task_by_task_id(body.get('id')).task_id
+        attr = 'time_reminder'
+        value = body.get('time_reminder')
+        if rep.edit_task(task_id, attr, value):
+            return edit_time_reminder_ok
+        else:
+            # ???
+            pass
+    except Exception as err:
+        rep.session.rollback()
+        return edit_time_reminder_bad_request
 
 
 def grant_access(body, session_id):
