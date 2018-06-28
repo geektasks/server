@@ -23,7 +23,49 @@ def task_created(task_id):
         }
     }
 
+#####################################
+delete_task_ok = {
+    "head": {
+        "type": "server response",
+        "name": "delete task"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+delete_task_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "delete task"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
 
+delete_task_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "delete task"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}
+
+delete_task_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "delete task"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
 ###########################################
 def tasks_get(tasks_list):
     return {

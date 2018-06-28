@@ -48,7 +48,8 @@ class Repository:
             self.session.delete(obj)
             self.session.commit()
             return True
-        except:
+        except Exception as err:
+            print('delete exception', err)
             self.session.rollback()
             return None
 

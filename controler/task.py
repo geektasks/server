@@ -58,6 +58,25 @@ def create_task(body, session_id):
             pass
 
 
+def delete_task(body, session_id):
+    # TODO сделать проверку на наличие доступа к удалению Задачи
+    if rep.get_user_by_session_id(session_id):
+        try:
+            task = rep.get_task_by_task_id(body.get('id'))
+            task_id = task.task_id
+        except:
+            return delete_task_bad_request
+        else:
+
+            if rep.del_(task):
+                return delete_task_ok
+            else:
+                print('failed to delete task')
+                pass
+    else:
+        return delete_task_unauthorized
+
+
 def edit_task(body, session_id):
     try:
         creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
