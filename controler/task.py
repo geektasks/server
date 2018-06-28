@@ -67,7 +67,12 @@ def delete_task(body, session_id):
         except:
             return delete_task_bad_request
         else:
-
+            all_watchers = rep.get_all_watchers(task_id=task_id)
+            all_performers = rep.get_all_performers(task_id=task_id)
+            for watcher in all_watchers:
+                rep.del_(watcher)
+            for performer in all_performers:
+                rep.del_(performer)
             if rep.del_(task):
                 return delete_task_ok
             else:
