@@ -20,7 +20,9 @@ def get_all_tasks(body, session_id):
             tasks_list[task.task_id] = {'name': task.name,
                                         'description': task.description,
                                         'date_reminder': task.date_reminder,
-                                        'time_reminder': task.time_reminder}
+                                        'time_reminder': task.time_reminder,
+                                        'date_create': task.date_create,
+                                        'date_deadline': task.date_deadline}
         return tasks_get(tasks_list)
 
 
