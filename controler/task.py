@@ -141,6 +141,25 @@ def edit_time_reminder(body, session_id):
         rep.session.rollback()
         return edit_time_reminder_bad_request
 
+def edit_date_deadline(body, session_id):
+    try:
+        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+        # TODO проверить права Пользователя на редактирование
+    except:
+        return edit_date_deadline_unauthorized
+    try:
+        task_id = rep.get_task_by_task_id(body.get('id')).task_id
+        attr = 'date_deadline'
+        value = body.get('date_deadline')
+        if rep.edit_task(task_id, attr, value):
+            return edit_date_deadline_ok
+        else:
+            # ???
+            pass
+    except Exception as err:
+        rep.session.rollback()
+        return edit_date_deadline_bad_request
+
 
 def grant_access(body, session_id):
     # TODO сделать проверку на наличие доступа к предоставлению прав

@@ -208,6 +208,39 @@ edit_time_reminder_bad_request = {
     }
 }
 
+####################################
+edit_date_deadline_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "edit date deadline"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+
+edit_date_deadline_ok = {
+    "head": {
+        "type": "server response",
+        "name": "edit date deadline"
+    },
+    "body": {
+        "code": 200,
+        "message": "ok"
+    }
+}
+edit_date_deadline_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "edit date deadline"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+
 #####################################
 grant_access_ok = {
     "head": {
