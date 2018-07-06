@@ -4,7 +4,7 @@ from controler.user import search_user
 from controler.task import create_task, edit_task, get_task_by_id, grant_access, deny_access, assign_performer, \
     remove_performer, \
     change_status, create_comment, delete_comment, get_all_tasks, get_all_performers, get_all_watchers, \
-    edit_date_reminder, edit_time_reminder, delete_task, edit_date_deadline
+    edit_date_reminder, edit_time_reminder, delete_task, edit_date_deadline, get_comments
 import serv.shortcuts as shortcuts
 
 TYPE = {
@@ -33,7 +33,8 @@ NAME = {
     'edit date reminder': edit_date_reminder,
     'edit time reminder': edit_time_reminder,
     'delete task': delete_task,
-    'edit date deadline': edit_date_deadline
+    'edit date deadline': edit_date_deadline,
+    'get comments': get_comments
 }
 
 
