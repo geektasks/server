@@ -90,6 +90,22 @@ class Repository:
         result = self.session.query(Tasks).filter_by(creator_id=creator_id).all()
         return result
 
+    def get_all_tasks_where_performer(self, user_id):
+        tasks = self.session.query(Performers).filter_by(user_id=user_id).all()
+        if tasks:
+            tasks = [self.get_task_by_task_id(task.task_id) for task in tasks]
+            return tasks
+        else:
+            return None
+
+    def get_all_tasks_where_watcher(self, user_id):
+        tasks = self.session.query(Watchers).filter_by(user_id=user_id).all()
+        if tasks:
+            tasks = [self.get_task_by_task_id(task.task_id) for task in tasks]
+            return tasks
+        else:
+            return None
+
     def get_task_by_task_id(self, task_id):
         return self.session.query(Tasks).filter_by(task_id=task_id).first()
 

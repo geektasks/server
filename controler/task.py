@@ -23,6 +23,25 @@ def get_all_tasks(body, session_id):
                                         'time_reminder': task.time_reminder,
                                         'date_create': task.date_create,
                                         'date_deadline': task.date_deadline}
+
+        where_performer = rep.get_all_tasks_where_performer(creator_id)
+        for task in where_performer:
+            tasks_list[task.task_id] = {'name': task.name,
+                                        'description': task.description,
+                                        'date_reminder': task.date_reminder,
+                                        'time_reminder': task.time_reminder,
+                                        'date_create': task.date_create,
+                                        'date_deadline': task.date_deadline}
+
+        where_watcher = rep.get_all_tasks_where_watcher(creator_id)
+        for task in where_watcher:
+            tasks_list[task.task_id] = {'name': task.name,
+                                        'description': task.description,
+                                        'date_reminder': task.date_reminder,
+                                        'time_reminder': task.time_reminder,
+                                        'date_create': task.date_create,
+                                        'date_deadline': task.date_deadline}
+
         return tasks_get(tasks_list)
 
 
