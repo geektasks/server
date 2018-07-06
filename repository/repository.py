@@ -87,7 +87,7 @@ class Repository:
         return result
 
     def get_all_tasks(self, creator_id):
-        result = self.session.query(Tasks).filter_by(creator_id = creator_id).all()
+        result = self.session.query(Tasks).filter_by(creator_id=creator_id).all()
         return result
 
     def get_task_by_task_id(self, task_id):
@@ -128,13 +128,28 @@ class Repository:
         return self.session.query(Comments).filter_by(comment_id=comment_id).first()
 
     def get_comments(self, task_id):
-        comments_list = list()
+        '''
+        ??обновлять омментарии на клиенте либо запросом на один комментарий, либо запросом сразу на все комментарии задачи??
+        :param task_id: server_task_id
+        :return:?? {task_id: {comment_id_1: {...}, comment_id_2: {...}, ...}} or [{'id': comment.comment_id,'user': user, 'text': comment.text, 'time': comment.time}, ...]
+        '''
+        # comments_list = list()
+        # comments = self.session.query(Comments).filter_by(task_id=task_id).all()
+        # for comment in comments:
+        #     if comment.task_id == task_id:
+        #         user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
+        #         comments_list.append(
+        #             {'id': comment.comment_id, 'user': user, 'text': comment.text, 'time': comment.time})
+        # return comments_list
+        comments_dict = {task_id: {}}
         comments = self.session.query(Comments).filter_by(task_id=task_id).all()
         for comment in comments:
-            if comment.task_id == task_id:
-                user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
-                comments_list.append({'user': user, 'text': comment.text, 'time': comment.time})
-        return comments_list
+            comment_id = comment.comment_id
+            text = comment.text
+            time = comment.time
+            user = self.session.query(Users).filter_by(user_id=comment.user_id).first().username
+            comments_dict[task_id].update({comment_id: {'user': user, 'text': text, 'time': time}})
+        return comments_dict
 
     def get_watcher(self, task_id, user_id):
         return self.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first()
