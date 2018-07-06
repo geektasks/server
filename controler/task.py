@@ -143,6 +143,7 @@ def edit_time_reminder(body, session_id):
         rep.session.rollback()
         return edit_time_reminder_bad_request
 
+
 def edit_date_deadline(body, session_id):
     try:
         creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
@@ -320,3 +321,18 @@ def delete_comment(body, session_id):
                 return delete_comment_forbidden
         else:
             return delete_comment_bad_request
+
+
+def get_comments(body, session_id):
+    '''сделать ответы на ошибки'''
+    try:
+        user_id = rep.get_user_by_session_id(session_id).user_id
+    except:
+        return get_comments_unauthorized
+    else:
+        comments = rep.get_comments(body.get('id'))  # server_task_id
+        if comments.get(body.get('id')):
+            return get_comments_ok(comments)
+        else:
+            return get_comments_forbidden
+

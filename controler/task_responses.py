@@ -612,3 +612,46 @@ delete_comment_forbidden = {
         "message": "forbidden"
     }
 }
+
+#####################
+def get_comments_ok(comments):
+    return {
+    "head": {
+        "type": "server response",
+        "name": "get comments"
+    },
+    "body": {
+        "code": 200,
+        "message": comments
+    }
+}
+get_comments_bad_request = {
+    "head": {
+        "type": "server response",
+        "name": "get comments"
+    },
+    "body": {
+        "code": 400,
+        "message": "bad request"
+    }
+}
+get_comments_unauthorized = {
+    "head": {
+        "type": "server response",
+        "name": "get comments"
+    },
+    "body": {
+        "code": 401,
+        "message": "unauthorized"
+    }
+}
+get_comments_forbidden = {
+    "head": {
+        "type": "server response",
+        "name": "get comments"
+    },
+    "body": {
+        "code": 403,
+        "message": "forbidden"
+    }
+}
