@@ -1,3 +1,4 @@
+import inspect
 from repository.repository import Repository
 from repository.models_tasks import Tasks
 from repository.models_watchers import Watchers
@@ -41,6 +42,15 @@ def set_rights(task_id, user_id, is_creator=False, is_watcher=False, is_performe
         date_deadline=date_deadline)
     if rep.add(right):
         return True
+
+
+def check_rights(task_id, user_id, action=None):
+    action = inspect.stack()[1][3] if not action else action
+    rights = rep.get_rights(task_id=task_id, user_id=user_id)
+    if action == 'delete_task':
+        print('**', rights.name)
+        if rights.name:
+            return True
 
 
 def get_all_tasks(body, session_id):
@@ -128,20 +138,27 @@ def create_task(body, session_id):
 
 
 def delete_task(body, session_id):
-    # TODO сделать проверку на наличие доступа к удалению Задачи
-    if rep.get_user_by_session_id(session_id):
+    user = rep.get_user_by_session_id(session_id)
+    if user:
+        user_id = user.user_id
         try:
             task = rep.get_task_by_task_id(body.get('id'))
             task_id = task.task_id
+
+            if not check_rights(task_id=task_id, user_id=user_id):
+                return delete_task_unauthorized
         except:
             return delete_task_bad_request
         else:
             all_watchers = rep.get_all_watchers(task_id=task_id)
             all_performers = rep.get_all_performers(task_id=task_id)
+            all_rights = rep.get_all_rights(task_id=task_id)
             for watcher in all_watchers:
                 rep.del_(watcher)
             for performer in all_performers:
                 rep.del_(performer)
+            for right in all_rights:
+                rep.del_(right)
             if rep.del_(task):
                 return delete_task_ok
             else:
@@ -243,7 +260,6 @@ def grant_access(body, session_id):
             if not rep.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first():
                 watcher = Watchers(task_id=task_id, user_id=user_id)
                 if rep.add(watcher):
-
                     set_rights(task_id=task_id, user_id=user_id, is_watcher=True)
 
                     return grant_access_ok
@@ -286,7 +302,6 @@ def assign_performer(body, session_id):
             if not rep.session.query(Performers).filter_by(task_id=task_id, user_id=user_id).first():
                 performer = Performers(task_id=task_id, user_id=user_id)
                 if rep.add(performer):
-
                     set_rights(task_id=task_id, user_id=user_id, is_performer=True)
 
                     return assign_performer_ok

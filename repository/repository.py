@@ -183,6 +183,12 @@ class Repository:
     def get_all_watchers(self, task_id):
         return self.session.query(Watchers).filter_by(task_id=task_id).all()
 
+    def get_rights(self, task_id, user_id):
+        return self.session.query(Rights).filter_by(task_id=task_id, user_id=user_id).first()
+
+    def get_all_rights(self, task_id):
+        return self.session.query(Rights).filter_by(task_id=task_id).all()
+
 
 if __name__ == '__main__':
     rep = Repository()
