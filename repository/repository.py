@@ -8,6 +8,7 @@ from repository.models_tasks import Tasks
 from repository.models_comments import Comments
 from repository.models_performers import Performers
 from repository.models_watchers import Watchers
+from repository.models_rights import Rights
 
 from repository.db_core import CBase
 from serv.create_config import get_setting

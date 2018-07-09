@@ -3,44 +3,89 @@ from repository.models_tasks import Tasks
 from repository.models_watchers import Watchers
 from repository.models_performers import Performers
 from repository.models_comments import Comments
+from repository.models_rights import Rights
 from controler.task_responses import *
 
 rep = Repository()
 
 
+def set_rights(task_id, user_id, is_creator=False, is_watcher=False, is_performer=False):
+    status = name = description = comments = date_deadline = date_reminder = time_reminder = 0
+    if is_creator:
+        status = 1
+        name = 1
+        description = 1
+        comments = 1
+        date_reminder = 1
+        time_reminder = 1
+        date_deadline = 1
+    if is_watcher:
+        status = 1
+        description = 1
+        comments = 1
+        date_deadline = 1
+    if is_performer:
+        status = 1
+        comments = 1
+        date_reminder = 1
+        time_reminder = 1
+    right = Rights(
+        task_id=task_id,
+        user_id=user_id,
+        status=status,
+        name=name,
+        description=description,
+        comments=comments,
+        date_reminder=date_reminder,
+        time_reminder=time_reminder,
+        date_deadline=date_deadline)
+    if rep.add(right):
+        return True
+
+
 def get_all_tasks(body, session_id):
     try:
-        creator_id = rep.get_user_by_session_id(session_id=session_id).user_id
+        creator = rep.get_user_by_session_id(session_id=session_id)
+        creator_id = creator.user_id
+        creator_name = creator.username
     except:
         return create_task_unauthorized  # изменить возврат ошибки
     else:
         tasks = rep.get_all_tasks(creator_id)
         tasks_list = {}
-        for task in tasks:
-            tasks_list[task.task_id] = {'name': task.name,
-                                        'description': task.description,
-                                        'date_reminder': task.date_reminder,
-                                        'time_reminder': task.time_reminder,
-                                        'date_create': task.date_create,
-                                        'date_deadline': task.date_deadline}
+        if tasks:
+            for task in tasks:
+                tasks_list[task.task_id] = {'name': task.name,
+                                            'description': task.description,
+                                            'date_reminder': task.date_reminder,
+                                            'time_reminder': task.time_reminder,
+                                            'date_create': task.date_create,
+                                            'date_deadline': task.date_deadline,
+                                            'creator': creator_name}
 
         where_performer = rep.get_all_tasks_where_performer(creator_id)
-        for task in where_performer:
-            tasks_list[task.task_id] = {'name': task.name,
-                                        'description': task.description,
-                                        'date_reminder': task.date_reminder,
-                                        'time_reminder': task.time_reminder,
-                                        'date_create': task.date_create,
-                                        'date_deadline': task.date_deadline}
+        if where_performer:
+            for task in where_performer:
+                creator_name = rep.get_user_by_user_id(task.creator_id).username
+                tasks_list[task.task_id] = {'name': task.name,
+                                            'description': task.description,
+                                            'date_reminder': task.date_reminder,
+                                            'time_reminder': task.time_reminder,
+                                            'date_create': task.date_create,
+                                            'date_deadline': task.date_deadline,
+                                            'creator': creator_name}
 
         where_watcher = rep.get_all_tasks_where_watcher(creator_id)
-        for task in where_watcher:
-            tasks_list[task.task_id] = {'name': task.name,
-                                        'description': task.description,
-                                        'date_reminder': task.date_reminder,
-                                        'time_reminder': task.time_reminder,
-                                        'date_create': task.date_create,
-                                        'date_deadline': task.date_deadline}
+        if where_watcher:
+            for task in where_watcher:
+                creator_name = rep.get_user_by_user_id(task.creator_id).username
+                tasks_list[task.task_id] = {'name': task.name,
+                                            'description': task.description,
+                                            'date_reminder': task.date_reminder,
+                                            'time_reminder': task.time_reminder,
+                                            'date_create': task.date_create,
+                                            'date_deadline': task.date_deadline,
+                                            'creator': creator_name}
 
         return tasks_get(tasks_list)
 
@@ -73,6 +118,9 @@ def create_task(body, session_id):
                      time_reminder=body.get('time_reminder'))
         if rep.add(task):
             task_id = rep.get_task(name=body.get('name')).task_id
+
+            set_rights(task_id=task_id, user_id=creator_id, is_creator=True)
+
             return task_created(task_id)
         else:
             # сообщение об ошибке добаления задачи?
@@ -195,6 +243,9 @@ def grant_access(body, session_id):
             if not rep.session.query(Watchers).filter_by(task_id=task_id, user_id=user_id).first():
                 watcher = Watchers(task_id=task_id, user_id=user_id)
                 if rep.add(watcher):
+
+                    set_rights(task_id=task_id, user_id=user_id, is_watcher=True)
+
                     return grant_access_ok
             else:
                 # сообщение пользователь уже в списке?
@@ -235,6 +286,9 @@ def assign_performer(body, session_id):
             if not rep.session.query(Performers).filter_by(task_id=task_id, user_id=user_id).first():
                 performer = Performers(task_id=task_id, user_id=user_id)
                 if rep.add(performer):
+
+                    set_rights(task_id=task_id, user_id=user_id, is_performer=True)
+
                     return assign_performer_ok
             else:
                 # сообщение пользователь уже в списке?
@@ -354,4 +408,3 @@ def get_comments(body, session_id):
             return get_comments_ok(comments)
         else:
             return get_comments_forbidden
-
